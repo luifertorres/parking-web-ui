@@ -1,0 +1,33 @@
+<div class="row mt-3">
+  <div class="col-6">
+    <h2>Tickets</h2>
+  </div>
+  <div class="col-6">
+    <button class="btn btn-primary float-end" routerLink="/checkin">Checkin</button>
+  </div>
+</div>
+
+<p *ngIf="!tickets"><em>Loading...</em></p>
+
+<div *ngIf="tickets">
+  <table class="table">
+    <thead>
+      <tr>
+        <th id="licensePlate">Plate</th>
+        <th id="checkIn">Checkin</th>
+        <th id="options">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets">
+        <td>{{ticket.licensePlate}}</td>
+        <td class="text-muted">{{ticket.checkIn}}</td>
+        <td>
+          <button class="btn btn-success" [routerLink]="['/checkout', ticket.id]">
+            <i class="fas fa-dollar-sign"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
